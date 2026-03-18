@@ -1,0 +1,47 @@
+# Configurazione per l'aggregatore di keyword da ATLAS e OpenAIRE, con parametri per SPARQL, NLP e policy di filtraggio
+
+atlas:
+  sparql_endpoint: "https://atlas-prin2022-blazegraph.cloud.d4science.org/bigdata/sparql"   
+  page_size: 200
+  title_predicates:
+    - "http://purl.org/dc/terms/title"
+    - "http://www.w3.org/2000/01/rdf-schema#label"
+    - "http://schema.org/name"
+  description_predicates:
+    - "http://purl.org/dc/terms/description"
+    - "http://schema.org/description"
+    - "http://purl.org/ontology/bibo/abstract"
+  resource_classes: []  # opzionale filtro per rdf:type
+  preferred_langs: ["it", "en"]
+
+openaire:
+  base_url: "https://api.openaire.eu/graph/v2/researchProducts" # Graph API. da modificare  
+  page_size: 100
+  max_pages_per_query: 50
+  sleep_seconds: 0.2
+  token: ""  # opzionale, per rate-limit più generosi
+
+nlp:
+  spacy_model: "it_core_news_sm"  # oppure en_core_web_sm / modello custom
+  use_keyphrases: true
+  max_keyphrases_per_doc: 12
+
+policy:
+  whitelist_labels: ["ORG", "GPE", "LOC", "WORK_OF_ART", "EVENT", "PRODUCT"]
+  blacklist_labels: ["PERSON", "DATE", "TIME", "MONEY", "QUANTITY"]
+  min_len: 3
+  ngram_min: 1
+  ngram_max: 3
+  topk_per_doc: 15
+  use_fuzzy_dedup: true
+  fuzzy_threshold: 90
+  stopwords: ["dataset", "project", "research", "studio", "analisi"]
+
+report:
+  out_csv: "data/reports/atlas_openaire.csv"
+  out_xlsx: "data/reports/atlas_openaire.xlsx"
+  save_json_samples: true
+
+cache:
+  dir: "data/cache"
+  ttl_days: 7

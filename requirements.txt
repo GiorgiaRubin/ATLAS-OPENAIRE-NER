@@ -1,0 +1,12 @@
+
+PyYAML>=6.0
+SPARQLWrapper>=2.0.0
+requests>=2.31.0
+pandas>=2.2.0
+openpyxl>=3.1.2
+spacy>=3.7.0
+langdetect>=1.0.9
+rapidfuzz>=3.0.0
+# Opzionali per keyphrases
+# yake>=0.4.8
+# keybert>=0.8.4
