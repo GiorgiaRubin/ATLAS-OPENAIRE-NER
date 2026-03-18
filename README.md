@@ -23,6 +23,7 @@ python scripts/run_pipeline.py --config config/config.yml
 - Cache in `data/cache/`
 
 ## Struttura cartella
+```
 ├─ README.md 
 ├─ requirements.txt 
 ├─ pyproject.toml 
@@ -52,3 +53,4 @@ python scripts/run_pipeline.py --config config/config.yml
 │ └─ test_placeholder.py 
 └─ docs/ 
   └─ flow.md
+```
