@@ -1,4 +1,4 @@
-# Script principale per eseguire la pipeline di estrazione e arricchimento keyword da risorse ATLAS, con output in CSV/XLSX
+# Script principale per eseguire la pipeline di estrazione e arricchimento keyword da risorse ATLAS, con output in CSV/XLSX per cross‑graph signal alignment ATLAS-OpenAIRE
 
 
 import argparse
@@ -61,7 +61,7 @@ def main():
         prec = preprocess_record(rec)
 
         # ---NER---
-        ents = ner.extract(prec['title'], prec['desc'])
+        ents = ner.extract(prec['title'], prec['desc'], debug=True)
 
         # arricchisci con keyphrases se richiesto
         if cfg.nlp.get('use_keyphrases', True):

@@ -18,9 +18,14 @@ class NERExtractor:
             except Exception:
                 self.nlp = None
 
-    def extract(self, title: str, desc: str) -> List[Dict]:
+    def extract(self, title: str, desc: str, debug: bool = False) -> List[Dict]:
         text = "".join([t for t in [title, desc] if t])
         ents: List[Dict] = []
+        if debug:
+            print("\n=== NER OUTPUT ===")
+            for e in ents:
+                print(f"- TEXT: '{e['text']}'  | LEMMA: '{e['lemma']}' | LABEL: {e['label']}")
+                print("==================\n")
         if self.nlp is None:
             return ents
         doc = self.nlp(text)

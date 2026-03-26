@@ -88,6 +88,12 @@ class AtlasClient:
             }}
             LIMIT {page_size} OFFSET {offset}
             """
+        
+
+        print("\n=== SPARQL QUERY ===")
+        print(q)
+        print("====================\n")
+
 
         return q
 
