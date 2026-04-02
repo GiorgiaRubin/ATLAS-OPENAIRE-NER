@@ -1,4 +1,4 @@
-# Writer per salvare i risultati in CSV e XLSX, con supporto per pandas se disponibile, altrimenti fallback a CSV minimale
+# Writer to save results in CSV and XLSX formats, with pandas support if available, otherwise fallback to minimal CSV
 
 
 from typing import List, Dict
@@ -18,7 +18,7 @@ def write_outputs(rows: List[Dict], out_csv: str, out_xlsx: str | None = None):
         if out_xlsx:
             df.to_excel(out_xlsx, index=False, engine='openpyxl')
     else:
-        # fallback CSV minimale
+        # minimal CSV fallback
         import csv
         if rows:
             with open(out_csv, 'w', encoding='utf-8', newline='') as f:

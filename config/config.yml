@@ -1,7 +1,8 @@
-# Configurazione per l'aggregatore di keyword da ATLAS e OpenAIRE, con parametri per SPARQL, NLP e policy di filtraggio
+# Configuration for the keyword aggregator from ATLAS and OpenAIRE,
+# with parameters for SPARQL, NLP, and filtering policy
 
 atlas:
-  sparql_endpoint: "https://atlas-prin2022-blazegraph.cloud.d4science.org/bigdata/sparql"   
+  sparql_endpoint: "https://atlas-prin2022-blazegraph.cloud.d4science.org/bigdata/sparql"
   page_size: 200
   title_predicates:
     - "http://purl.org/dc/terms/title"
@@ -11,31 +12,44 @@ atlas:
     - "http://purl.org/dc/terms/description"
     - "http://schema.org/description"
     - "http://purl.org/ontology/bibo/abstract"
-  resource_classes: []  # opzionale filtro per rdf:type
+  resource_classes: []  # optional filter for rdf:type
   preferred_langs: ["it", "en"]
 
 openaire:
-  base_url: "https://api.openaire.eu/graph/v2/researchProducts" # Graph API. da modificare  
+  base_url: "https://api.openaire.eu/graph/v2/researchProducts"
   page_size: 100
   max_pages_per_query: 50
   sleep_seconds: 0.2
-  token: ""  # opzionale, per rate-limit più generosi
+  token: ""  # optional, for more generous rate limits
 
 nlp:
-  spacy_model: "it_core_news_sm"  # oppure en_core_web_sm / modello custom
+  spacy_model: "it_core_news_lg"  # custom model
   use_keyphrases: true
   max_keyphrases_per_doc: 12
 
 policy:
   whitelist_labels: ["ORG", "GPE", "LOC", "WORK_OF_ART", "EVENT", "PRODUCT"]
-  blacklist_labels: ["PERSON", "DATE", "TIME", "MONEY", "QUANTITY"]
-  min_len: 3
+  blacklist_labels: ["PERSON", "DATE", "TIME", "MONEY", "QUANTITY", "CARDINAL", "MISC"]
+  min_len: 5
   ngram_min: 1
   ngram_max: 3
-  topk_per_doc: 15
+  topk_per_doc: 20
   use_fuzzy_dedup: true
   fuzzy_threshold: 90
-  stopwords: ["dataset", "project", "research", "studio", "analisi"]
+  stopwords:
+    [
+      "project","research","study","analysis","digital","dataset","data","resources",
+      "resource","collection","collections","edition","editions","publication",
+      "publications","contents","introduction","context","tool","tools","archive",
+      "archives","digital humanities","cultural heritage","linked data","semantic",
+      "ontology","ontologies","framework","platform","infrastructure","record",
+      "records","xml","tei","metadata",
+      "progetto","ricerca","studio","analisi","documento","documenti","digitale",
+      "digitali","materiale","materiali","risorsa","risorse","dataset","dati",
+      "archivio","archivi","collezione","collezioni","edizioni","edizione",
+      "pubblicazione","pubblicazioni","opera","volume","testi","testo","descrizione",
+      "introduzione"
+    ]
 
 report:
   out_csv: "data/reports/atlas_openaire.csv"

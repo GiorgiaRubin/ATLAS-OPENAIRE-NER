@@ -1,4 +1,4 @@
-# Estrazione di parole chiave da un testo, con fallback minimale se YAKE non è disponibile
+# Extraction of key phrases from text, with minimal fallback if YAKE is not available
 
 
 from typing import List
@@ -13,7 +13,7 @@ def extract_keyphrases(text: str, topk: int = 10, lan: str = 'it') -> List[str]:
     if not text:
         return []
     if yake is None:
-        # fallback minimo: ritorna parole uniche più lunghe di 4 caratteri
+        # minimal fallback: returns unique words longer than 4 characters
         toks = [w.strip('.,;:!?()[]') for w in text.split()]  # noqa
         toks = [t for t in toks if len(t) >= 5]
         uniq = []

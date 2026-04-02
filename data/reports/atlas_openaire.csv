@@ -1,1 +1,10 @@
-
+atlas_id,titolo_atlas,keyword,tipo_entita,metodo,count_title,count_desc,count_subject
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,Paolo Bufalini - Edizione,KEYWORD,NER+KP,0,2,1
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,Paolo Bufalini,KEYWORD,NER+KP,12,15,2
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,Edizione digitale,KEYWORD,NER+KP,169,521,131
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,quaderno di Paolo,KEYWORD,NER+KP,11,34,0
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,Bufalini,KEYWORD,NER+KP,123,173,33
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,Edizione,KEYWORD,NER+KP,10851,16082,2099
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,Paolo,KEYWORD,NER+KP,21124,32743,5091
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,digitale,KEYWORD,NER+KP,71832,166038,54711
+https://w3id.org/dh-atlas/1743001065-375169,Il quaderno di Paolo Bufalini - Edizione digitale,quaderno,KEYWORD,NER+KP,1227,1497,66

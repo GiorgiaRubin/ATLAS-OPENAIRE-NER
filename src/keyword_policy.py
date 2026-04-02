@@ -1,8 +1,9 @@
-# Policy per filtrare e deduplicare le keyword estratte, con supporto per whitelist/blacklist, stopwords e fuzzy matching 
-
+# Policy for filtering and deduplicating extracted keywords,
+# with support for whitelist/blacklist, stopwords, and fuzzy matching
 
 from typing import List, Dict, Set
 from rapidfuzz import fuzz
+
 
 class KeywordPolicy:
     def __init__(self, cfg: dict):
@@ -15,7 +16,7 @@ class KeywordPolicy:
         self.stopwords: Set[str] = set(map(str.lower, cfg.get('stopwords', [])))
 
     def _accept_label(self, label: str) -> bool:
-        # whitelist NON deve eliminare tutto
+        # whitelist must NOT eliminate everything
         if self.whitelist:
             if label not in self.whitelist and label != 'NOUN_CHUNK':
                 return False
@@ -26,7 +27,7 @@ class KeywordPolicy:
         return True
 
     def select(self, candidates: List[Dict]) -> List[str]:
-        # filtra per label/len/stopword
+        # filter by label/length/stopwords
         out: List[str] = []
         for c in candidates:
             txt = (c.get('lemma') or c.get('text') or '').strip()
@@ -39,9 +40,9 @@ class KeywordPolicy:
             out.append(txt)
 
         # DEBUG
-        print(f"[DEBUG POLICY] candidati: {len(candidates)} → dopo filtro base: {len(out)}")
+        print(f"[DEBUG POLICY] candidates: {len(candidates)} → after base filter: {len(out)}")
 
-        # fallback: NON lasciare mai lista vuota
+        # fallback: NEVER return an empty list
         if not out:
             fallback = [
                 (c.get('lemma') or c.get('text') or '').strip()
@@ -50,26 +51,21 @@ class KeywordPolicy:
             ]
             fallback = [k for k in fallback if len(k) >= self.min_len]
 
-            print("[WARNING] Policy ha filtrato tutto → fallback interno")
+            print("[WARNING] Policy filtered everything → internal fallback")
             return fallback[: self.topk]
-    
-        # dedup semplice
+
+        # simple deduplication
         dedup: List[str] = []
         for k in out:
             if not any(k.lower() == d.lower() for d in dedup):
                 dedup.append(k)
-        # fuzzy dedup
+
+        # fuzzy deduplication
         if self.use_fuzzy:
             final: List[str] = []
             for k in dedup:
                 if not any(fuzz.token_set_ratio(k, f) >= self.fuzzy_threshold for f in final):
                     final.append(k)
             dedup = final
+
         return dedup[: self.topk]
-
-        
-
-
-
-        """if not txt or txt.strip() == "":
-            continue"""

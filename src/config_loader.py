@@ -1,9 +1,9 @@
-# Config loader, per caricare le impostazioni da un file YAML
-
+# Config loader, to load settings from a YAML file
 
 from dataclasses import dataclass
 from pathlib import Path
 import yaml
+
 
 @dataclass
 class Config:
@@ -18,7 +18,9 @@ class Config:
 def load_config(path: str) -> Config:
     p = Path(path)
     if not p.exists():
-        raise FileNotFoundError(f"Config non trovato: {p}")
+        raise FileNotFoundError(f"Config not found: {p}")
+
     with p.open('r', encoding='utf-8') as f:
         data = yaml.safe_load(f)
+
     return Config(**data)

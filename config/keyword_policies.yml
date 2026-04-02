@@ -1,9 +1,7 @@
-# Configurazione per le politiche di filtraggio delle keyword
+# Configuration of keyword policy filtering
 
-
-# Esempio separato (opzionale) di liste dominio-specifiche
 whitelist:
   - "CLARIN"
   - "ARIADNE"
 blacklist:
-  - "Italia"  # esempio: troppo generico se i record sono tutti italiani
+  - "Italia" 

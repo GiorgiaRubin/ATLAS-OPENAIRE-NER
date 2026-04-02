@@ -1,5 +1,4 @@
-# Normalizzazione di testo, per migliorare la qualità dell'estrazione di keyword e NER
-
+# Text normalization, to improve the quality of keyword and NER extraction
 
 import re, unicodedata
 from typing import Dict

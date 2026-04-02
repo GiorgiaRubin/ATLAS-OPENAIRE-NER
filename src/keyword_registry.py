@@ -1,4 +1,4 @@
-# Registry globale per evitare chiamate duplicate a OpenAIRE
+# Global registry for avoiding duplicate calls to OpenAIRE
 
 class KeywordRegistry:
 

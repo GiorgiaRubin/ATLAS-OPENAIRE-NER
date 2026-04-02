@@ -6,6 +6,6 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "atlas-openaire-ner"
 version = "0.1.0"
-description = "Pipeline NER/Keyphrase per ATLAS con interrogazione OpenAIRE Graph API"
+description = "Pipeline NER/Keyphrase for ATLAS knowledge graph with API querying on OpnAIRE Graph"
 requires-python = ">=3.10"
 dependencies = []

@@ -1,5 +1,4 @@
-# Configurazione del logging, con rotazione dei file per evitare di occupare troppo spazio
-
+# Logging configuration, with file rotation to avoid occupying too much space
 
 import logging
 from logging.handlers import RotatingFileHandler
