@@ -9,8 +9,7 @@ perform ***NER/Keyphrase extraction***, search for ***keywords*** in the ***Open
 - Python 3.10+
 - `pip install -r requirements.txt`
 - spaCy models (e.g.):
-  - `python -m spacy download it_core_news_sm`
-  - `python -m spacy download en_core_web_sm`
+  - `python -m spacy download it_core_news_lg`
 
 ## Run
 ```bash
@@ -27,8 +26,8 @@ python scripts/run_pipeline.py --config config/config.yml
 ├─ requirements.txt 
 ├─ pyproject.toml 
 ├─ config/ 
-│ ├─ config.yml # ← copialo configuration file 
-│ └─ keyword_policies.yml # optional (domain whitelist/blacklist) 
+│ ├─ config.yml # 
+│ └─ keyword_policies.yml # optional (domain whitelist/blacklist/stopwords) 
 ├─ src/ 
 │ ├─ __init__.py 
 │ ├─ logging_conf.py 
