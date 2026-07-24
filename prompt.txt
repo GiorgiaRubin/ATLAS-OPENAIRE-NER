@@ -1,0 +1,13 @@
+** Prompt provided to Microsoft Copilot (defalut configuration) to support Name Entities filtering operations:
+
+"The attached list contains candidate entities automatically extracted through a NER pipeline from the titles and descriptions of resources in the DH-ATLAS
+a knowledge graph describing datasets, software, projects, publications, organizations, and other research resources related to the Italian Digital Humanities community.
+
+Review the list and:
+
+-group semantically equivalent terms;
+-identify the most representative label for each group;
+-remove generic, non informative, or non nominal terms;
+-preserve domain specific terminology.
+
+Don't introduce new concepts or modify the meaning of the original terms. Base your suggestions only on the provided list. Return the results in a new list."
